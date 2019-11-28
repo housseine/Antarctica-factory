@@ -14,7 +14,7 @@ public class Game {
 	private Long id;
 	private String name;
 	private String description;
-	private String rate;
+	private int rate;
 	private String comment;
 
 	
@@ -22,7 +22,7 @@ public class Game {
 		
 	}
 
-	public Game(String name, String description, String rate, String comment) {
+	public Game(String name, String description, int rate, String comment) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -54,11 +54,11 @@ public class Game {
 		this.description = description;
 	}
 
-	public String getRate() {
+	public int getRate() {
 		return rate;
 	}
 
-	public void setRate(String rate) {
+	public void setRate(int rate) {
 		this.rate = rate;
 	}
 

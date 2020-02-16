@@ -8,6 +8,4 @@ jdk:
 #script: "./build.sh"
 after_success:
 - echo "after_success"
-env:
-  global:
   

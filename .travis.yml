@@ -3,30 +3,8 @@ language: java
 jdk:
   - oraclejdk8
 
-branches:
-  only:
-  - master
-
-stages:
-  - name: build
-    if: type = pull_request
-  - name: deploy
-    if: branch != master AND type != pull_request
-
-jobs:
-  include:
-    - stage: build
-      cache:
-        directories:
-        - $HOME/.m2
-      script:
+script:
         - mvn clean install
-        
-    - stage: deploy
-      before_install:
-        - echo -e "RUNNING"
-      script:
-        - mvn springboot run
 
 notifications:
   email:

@@ -4,11 +4,10 @@ cache:
 language: java
 dist: trusty
 jdk:
-- oraclejdk8
+  - oraclejdk8
 before_install:
   - chmod +x mvnw
-script:
-        - mvn clean install
+script: ./mvnw clean install
 notifications:
   email:
     - ht.housseine@gmail.com

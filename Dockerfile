@@ -1,7 +1,7 @@
 FROM openjdk:8
 VOLUME /tmp
 EXPOSE 8080:8080
-ENV APP_ROOT /app
+ENV APP_ROOT /antarctica-lab
 RUN mkdir ${APP_ROOT}
 WORKDIR ${APP_ROOT}
 RUN ls ${APP_ROOT}

@@ -1,11 +1,33 @@
-cache:
-  directories:
-  - "$HOME/.m2"
 language: java
-dist: trusty
+
 jdk:
-- oraclejdk8
-#script: "./build.sh"
-after_success:
-- echo "after_success"
-  
+  - oraclejdk8
+
+branches:
+  only:
+  - master
+
+stages:
+  - name: build
+    if: type = pull_request
+  - name: deploy
+    if: branch != master AND type != pull_request
+
+jobs:
+  include:
+    - stage: build
+      cache:
+        directories:
+        - $HOME/.m2
+      script:
+        - mvn clean install
+        
+    - stage: deploy
+      before_install:
+        - echo -e "RUNNING"
+      script:
+        - mvn springboot run
+
+notifications:
+  email:
+    - ht.housseine@gmail.com

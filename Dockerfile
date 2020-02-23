@@ -1,5 +1,7 @@
 FROM openjdk:8
 
+VOLUME /tmp
+
 ENV APP_ROOT /Antarctica-factory
 
 RUN mkdir ${APP_ROOT}
@@ -10,7 +12,7 @@ RUN echo ${APP_ROOT}
 
 RUN ls ${APP_ROOT}
 
-RUN ls /Antarctica-factory
+RUN ls -al /Antarctica-factory
 
 COPY target/antarctica-lab-0.0.1-SNAPSHOT.jar ${APP_ROOT}/antarctica-lab-0.0.1-SNAPSHOT.jar
 COPY config ${APP_ROOT}/config/

@@ -9,10 +9,9 @@ jdk:
   - oraclejdk8
 before_install:
  - chmod +x mvnw
- - ls
  # install heroku CLI
  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
- - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
+ - echo $HEROKU_PASSWORD | docker login -u $HEROKU_USERNAME --password-stdin registry.heroku.com
 script: mvn clean verify
  - docker build -t antarctica-lab .
 deploy:

@@ -9,6 +9,7 @@ jdk:
   - oraclejdk8
 before_install:
  - chmod +x mvnw
+ - ls
  - docker build -t antarctica-lab .
  # install heroku CLI
  - wget -qO- https://toolbelt.heroku.com/install.sh | sh

@@ -6,7 +6,7 @@ ENV APP_ROOT /Antarctica-factory
 
 RUN mkdir ${APP_ROOT}
 
-WORKDIR ${APP_ROOT}
+#WORKDIR ${APP_ROOT}
 
 #RUN echo ${APP_ROOT}
 

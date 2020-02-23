@@ -13,7 +13,7 @@ WORKDIR ${APP_ROOT}
 #RUN ls ${APP_ROOT}
 
 #RUN ls -al /Antarctica-factory
-RUN ls /target
+RUN ls /home/travis/build
 
 COPY target/antarctica-lab-0.0.1-SNAPSHOT.jar ${APP_ROOT}/antarctica-lab-0.0.1-SNAPSHOT.jar
 COPY config ${APP_ROOT}/config/

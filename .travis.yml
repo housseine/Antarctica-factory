@@ -12,6 +12,7 @@ before_install:
  - chmod +x mvnw
  # install heroku CLI
  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+ - whereis heroku
  - echo $HEROKU_PASSWORD | docker login -u $HEROKU_USERNAME --password-stdin registry.heroku.com
  - echo "bmxbmx1991!!" | docker login -u "housseine2014tassa@gmail.com" --password-stdin registry.heroku.com
 

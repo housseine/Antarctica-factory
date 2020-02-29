@@ -20,6 +20,7 @@ before_install:
 script: 
  - mvn clean verify
  - docker build -t antarctica-lab .
+ - docker tag antarctica-lab registry.heroku.com/$HEROKU_APP_NAME/web;
 deploy:
  provider: script
  script:

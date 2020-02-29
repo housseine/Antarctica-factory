@@ -14,7 +14,6 @@ before_install:
  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
  - whereis heroku
  #- echo $HEROKU_PASSWORD | docker login -u $HEROKU_USERNAME --password-stdin registry.heroku.com
- #- echo "bmxbmx1991!!" | docker login -u $HEROKU_API_KEY --password-stdin registry.heroku.com
  - docker login --username="housseine2014tassa@gamil.com" --password=$HEROKU_API_KEY registry.heroku.com
 
 script: 

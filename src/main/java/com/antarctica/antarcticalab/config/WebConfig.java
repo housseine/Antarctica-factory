@@ -14,8 +14,8 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
 
-	@Value("${spring.datasource.url}")
-	private String dbUrl;
+//	@Value("${spring.datasource.url}")
+//	private String dbUrl;
 
 	@Override
 	public void addCorsMappings(CorsRegistry corsRegistry) {
@@ -23,11 +23,11 @@ public class WebConfig implements WebMvcConfigurer {
 				"PATCH", "DELETE");
 	}
 
-	@Bean
-	public DataSource dataSource() {
-		HikariConfig config = new HikariConfig();
-		config.setJdbcUrl(dbUrl);
-		return new HikariDataSource(config);
-	}
+//	@Bean
+//	public DataSource dataSource() {
+//		HikariConfig config = new HikariConfig();
+//		config.setJdbcUrl(dbUrl);
+//		return new HikariDataSource(config);
+//	}
 
 }

@@ -15,6 +15,8 @@ public class WebConfig implements WebMvcConfigurer {
 				"PATCH", "DELETE");
 		corsRegistry.addMapping("/**").allowedOrigins("https://antarctica-lab.herokuapp.com/").allowedMethods("GET", "PUT", "POST",
 				"PATCH", "DELETE");
+		corsRegistry.addMapping("/**").allowedOrigins("https://antarctica-lab.herokuapp.com/").allowedMethods("GET", "PUT", "POST",
+				"PATCH", "DELETE");
 	}
 
 }

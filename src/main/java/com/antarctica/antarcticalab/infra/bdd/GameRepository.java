@@ -1,49 +1,50 @@
-package com.antarctica.antarcticalab.service;
+package com.antarctica.antarcticalab.infra.bdd;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.antarctica.antarcticalab.domain.IGameDomainRepository;
 import com.antarctica.antarcticalab.entity.Game;
 
-@Service
-public class GameService implements IGameService {
+@Component
+public class GameRepository implements IGameDomainRepository{
+
 	@Autowired
-	IGameDomainRepository gameRepository;
+	IGameRepository igameRepository;
 
 	@Override
 	public Game addGame(Game game) {
-		return gameRepository.addGame(game);
+		return igameRepository.saveAndFlush(game);
 
 	}
 
 	@Override
 	public List<Game> getAllGames() {
-		return gameRepository.getAllGames();
+		return igameRepository.findAll();
 	}
 
 	@Override
 	public void deleteGame(Long gameId) {
-		gameRepository.deleteGame(gameId);
+		igameRepository.deleteById(gameId);
 	}
 
 	@Override
 	public void updateGame(Game game) {
-		gameRepository.updateGame(game);
+		igameRepository.saveAndFlush(game);
 
 	}
 
 	@Override
 	public Optional<Game> getGameById(Long id) {
-		return gameRepository.getGameById(id);
+		return igameRepository.findById(id);
 	}
 
 	@Override
 	public List<Game> getGameByName(String term) {
-		return gameRepository.getGameByName(term);
+		return igameRepository.findByNameContainingIgnoreCase(term);
 	}
 
 }

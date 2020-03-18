@@ -1,4 +1,4 @@
-package com.antarctica.antarcticalab.repository;
+package com.antarctica.antarcticalab.infra.bdd;
 
 import java.util.List;
 

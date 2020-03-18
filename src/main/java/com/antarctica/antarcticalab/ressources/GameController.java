@@ -1,4 +1,4 @@
-package com.antarctica.antarcticalab.infra;
+package com.antarctica.antarcticalab.ressources;
 
 import java.util.List;
 import java.util.Optional;

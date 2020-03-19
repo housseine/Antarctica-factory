@@ -6,11 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 @JsonAutoDetect
 @Entity
 @Table(name = "game")
-public class Game {
+public class Game extends RepresentationModel<Game> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;

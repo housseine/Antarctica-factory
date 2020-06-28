@@ -1,5 +1,8 @@
 package com.antarctica.antarcticalab.config;
 
-public class SecurityConfig {
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
 
 }

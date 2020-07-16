@@ -12,7 +12,6 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.antarctica.antarcticalab.entity.User;
 
-
 public class UserPrincipal implements OAuth2User, UserDetails {
     private Long id;
     private String email;

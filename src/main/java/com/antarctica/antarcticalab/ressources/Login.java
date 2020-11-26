@@ -17,11 +17,14 @@ public class Login {
 	private TokenProvider tokenProvider;
 
 	@GetMapping("/oauth2/redirect")
-	void getWelcom(@RequestParam(value = "token") String token, HttpServletResponse httpServletResponse) {
+	void  getWelcom(@RequestParam(value = "token") String token, HttpServletResponse httpServletResponse) {
 		httpServletResponse.setHeader("Location", "http://localhost:4200");
 		httpServletResponse.setStatus(302);
-		HttpCookie cookie=tokenProvider.makeTokenCookie(token);
-		httpServletResponse.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+		if(token!=null) {
+			HttpCookie cookie=tokenProvider.makeTokenCookie(token);
+			httpServletResponse.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+			httpServletResponse.addHeader("access", "true");	
+		}
 	}
 
 }

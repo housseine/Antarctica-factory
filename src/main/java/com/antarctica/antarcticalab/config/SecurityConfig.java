@@ -18,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
+import org.springframework.web.client.RestTemplate;
 
 import com.antarctica.antarcticalab.security.CustomOAuth2UserService;
 import com.antarctica.antarcticalab.security.CustomUserDetailsService;
@@ -161,5 +162,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
+    }
+    
+    @Bean
+    public RestTemplate getRestTemplate() {
+       return new RestTemplate();
     }
 }

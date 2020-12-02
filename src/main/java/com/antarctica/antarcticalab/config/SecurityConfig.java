@@ -12,9 +12,13 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
+import org.springframework.web.client.RestTemplate;
 
 import com.antarctica.antarcticalab.security.CustomOAuth2UserService;
 import com.antarctica.antarcticalab.security.CustomUserDetailsService;
@@ -129,7 +133,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .userService(customOAuth2UserService)
                         .and()
                     .successHandler(oAuth2AuthenticationSuccessHandler)
-                    .failureHandler(oAuth2AuthenticationFailureHandler);
+                    .failureHandler(oAuth2AuthenticationFailureHandler)
+                    .and().sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                    .maximumSessions(1)
+                    .maxSessionsPreventsLogin(true)
+                    .sessionRegistry(sessionRegistry()).and()
+                    .sessionFixation().migrateSession();
 
         // Add our custom Token based authentication filter
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -141,4 +151,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/swagger-ui/**", "/v3/api-docs/**");
 	}
+    
+    @Bean
+    public SessionRegistry sessionRegistry() {
+        SessionRegistry sessionRegistry = new SessionRegistryImpl();
+        return sessionRegistry;
+    }
+
+
+    @Bean
+    public HttpSessionEventPublisher httpSessionEventPublisher() {
+        return new HttpSessionEventPublisher();
+    }
+    
+    @Bean
+    public RestTemplate getRestTemplate() {
+       return new RestTemplate();
+    }
 }

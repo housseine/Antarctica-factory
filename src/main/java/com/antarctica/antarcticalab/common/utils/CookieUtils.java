@@ -36,8 +36,8 @@ public class CookieUtils {
         //response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=None");
         ResponseCookie responseCookie = ResponseCookie.from(name, value)
         		.maxAge(maxAge)
-                .domain("https://antarctica-lab.herokuapp.com")
-                .domain("https://antarctica-lab-web.web.app")
+//                .domain("https://antarctica-lab.herokuapp.com")
+                .domain("antarctica-lab-web.web.app")
                 .httpOnly(true)
                 .sameSite("None")
                 .secure(true)

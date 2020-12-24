@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.ResponseCookie;
 import org.springframework.util.SerializationUtils;
 
 public class CookieUtils {
@@ -27,11 +28,20 @@ public class CookieUtils {
 
     public static void addCookie(HttpServletResponse response, String name, String value, int maxAge) {
         Cookie cookie = new Cookie(name, value);
-        cookie.setPath("/");
+        cookie.setPath("https://antarctica-lab-web.web.app");
         cookie.setHttpOnly(true);
         cookie.setMaxAge(maxAge);
         response.addCookie(cookie);
-        response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=None");
+        //response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=None");
+//        ResponseCookie responseCookie = ResponseCookie.from(name, value)
+//        		.maxAge(maxAge)
+//                .domain("https://antarctica-lab.herokuapp.com")
+//                .domain("https://antarctica-lab-web.web.app")
+//                .httpOnly(true)
+//                .sameSite("None")
+//                .secure(true)
+//                .path("/")
+//                .build();
     }
 
     public static void deleteCookie(HttpServletRequest request, HttpServletResponse response, String name) {

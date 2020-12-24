@@ -31,7 +31,7 @@ public class CookieUtils {
         cookie.setHttpOnly(true);
         cookie.setMaxAge(maxAge);
         response.addCookie(cookie);
-        response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Lax");
+        response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=None");
     }
 
     public static void deleteCookie(HttpServletRequest request, HttpServletResponse response, String name) {

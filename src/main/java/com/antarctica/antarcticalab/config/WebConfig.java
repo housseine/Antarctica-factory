@@ -29,6 +29,8 @@ public class WebConfig implements WebMvcConfigurer {
 				.allowedOrigins("http://localhost:4200")
 				.allowedOrigins("https://antarctica-lab-web.web.app")
 				.allowedOrigins("https://antarctica-lab.herokuapp.com")
+				.allowedOrigins("https://antarctica-lab.herokuapp.com")
+				.allowedOrigins("*")
 				.allowedHeaders("*")
 				.allowCredentials(true)
 				.maxAge(MAX_AGE_SECS);

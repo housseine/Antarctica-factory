@@ -37,10 +37,10 @@ public class CookieUtils {
         ResponseCookie responseCookie = ResponseCookie.from(name, value)
         		.maxAge(maxAge)
 //                .domain("https://antarctica-lab.herokuapp.com")
-                .domain("antarctica-lab-web.web.app")
+//                .domain("antarctica-lab-web.web.app")
                 .httpOnly(true)
                 .sameSite("None")
-                .secure(true)
+//                .secure(true)
                 .path("/")
                 .build();
         response.addHeader(HttpHeaders.SET_COOKIE, responseCookie.toString());

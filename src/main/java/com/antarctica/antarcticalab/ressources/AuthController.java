@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -89,13 +90,14 @@ public class AuthController {
 
 	}
 
-	@GetMapping("/sendToken/{token}")
-	public ResponseEntity<TokenPayLoad> sendToken(@PathVariable String token, HttpServletResponse httpServletResponse) {
+	@GetMapping("/sendToken")
+	public ResponseEntity<TokenPayLoad> sendToken(@RequestParam("token") String token, HttpServletResponse httpServletResponse) {
 		HttpCookie cookie = tokenProvider.makeTokenCookie(token);
 		httpServletResponse.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
-		TokenPayLoad tokenPayLoad= new TokenPayLoad();
+		TokenPayLoad tokenPayLoad = new TokenPayLoad();
 		tokenPayLoad.setTokenCookiePayLoad("access");
-		System.out.println("Token payload"+tokenPayLoad);
+		System.out.println("token: " + token);
+		System.out.println("cookie: " + cookie);
 		return new ResponseEntity<TokenPayLoad>(tokenPayLoad, HttpStatus.OK);
 	}
 

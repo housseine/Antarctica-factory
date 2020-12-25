@@ -74,7 +74,7 @@ public class TokenProvider {
 	public HttpHeaders storeToken(String token) {
 		HttpHeaders httpHeaders = new HttpHeaders();
 
-		HttpCookie cookie = ResponseCookie.from("acc_tok", token).maxAge(-1).httpOnly(true).path("/")
+		HttpCookie cookie = ResponseCookie.from("acc_tok", token).maxAge(-1).httpOnly(true).sameSite("None").path("/")
 				.build();
 
 		httpHeaders.add(HttpHeaders.SET_COOKIE, cookie.toString());
@@ -82,7 +82,7 @@ public class TokenProvider {
 	}
 
 	public HttpCookie makeTokenCookie(String token) {
-		HttpCookie cookie = ResponseCookie.from("acc_tok", token).maxAge(-1).httpOnly(true).path("/")
+		HttpCookie cookie = ResponseCookie.from("acc_tok", token).maxAge(-1).httpOnly(true).sameSite("None").path("/")
 				.build();
 		return cookie;
 	}

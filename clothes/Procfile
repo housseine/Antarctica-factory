@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -jar target/clothes-0.0.1-SNAPSHOT-clothes.jar -Dserver.port=$PORT $JAR_OPTS

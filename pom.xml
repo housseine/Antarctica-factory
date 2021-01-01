@@ -13,5 +13,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>clothes</module>
+    <module>antarctica-lab</module>
   </modules>
 </project>

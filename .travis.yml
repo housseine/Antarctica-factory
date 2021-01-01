@@ -26,9 +26,9 @@ deploy:
  provider: script
  script:
    docker push registry.heroku.com/$HEROKU_APP_NAME/web;
-   heroku container:release web --app $HEROKU_APP_NAME
+   heroku container:release web --app $HEROKU_APP_NAME;
    docker push registry.heroku.com/niollo-clothes-api/web;
-   heroku container:release web --app niollo-clothes-api
+   heroku container:release web --app niollo-clothes-api;
  on:
    branch: master
 notifications:

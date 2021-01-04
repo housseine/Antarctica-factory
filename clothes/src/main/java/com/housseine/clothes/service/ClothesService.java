@@ -15,27 +15,27 @@ public class ClothesService implements IClothesService{
 
 	@Override
 	public Clothes addclothes(Clothes clothes) {
-		return clothesRepository.addclothes(clothes);
+		return clothesRepository.addClothes(clothes);
 	}
 
 	@Override
 	public List<Clothes> getAllclothess() {
-		return clothesRepository.getAllclothess();
+		return clothesRepository.getAllClothess();
 	}
 
 	@Override
 	public void deleteclothes(Long clothesId) {
-		clothesRepository.deleteclothes(clothesId);		
+		clothesRepository.deleteClothes(clothesId);		
 	}
 
 	@Override
 	public void updateclothes(Clothes clothes) {
-		clothesRepository.updateclothes(clothes);		
+		clothesRepository.updateClothes(clothes);		
 	}
 
 	@Override
 	public Optional<Clothes> getclothesById(Long id) {
-		return clothesRepository.getclothesById(id);
+		return clothesRepository.getClothesById(id);
 	}
 
 	@Override

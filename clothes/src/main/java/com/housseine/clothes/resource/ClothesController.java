@@ -55,6 +55,5 @@ public class ClothesController {
 	@GetMapping()
 	public ResponseEntity<List<Clothes>> getClothesByName(@RequestParam("term") String term) {
 		return new ResponseEntity<List<Clothes>>(clothesService.getClothesByLabel(term), HttpStatus.OK);
-
 	}
 }

@@ -15,27 +15,27 @@ public class ClothesRepository implements IClothesDomainRepository {
 	IClothesRepository iClothesRepository;
 	
 	@Override
-	public Clothes addclothes(Clothes clothes) {
+	public Clothes addClothes(Clothes clothes) {
 		return iClothesRepository.saveAndFlush(clothes);
 	}
 
 	@Override
-	public List<Clothes> getAllclothess() {
+	public List<Clothes> getAllClothess() {
 		return iClothesRepository.findAll();
 	}
 
 	@Override
-	public void deleteclothes(Long clothesId) {
+	public void deleteClothes(Long clothesId) {
 		iClothesRepository.deleteById(clothesId);
 	}
 
 	@Override
-	public void updateclothes(Clothes clothes) {
+	public void updateClothes(Clothes clothes) {
 		iClothesRepository.saveAndFlush(clothes);
 	}
 
 	@Override
-	public Optional<Clothes> getclothesById(Long id) {
+	public Optional<Clothes> getClothesById(Long id) {
 		return iClothesRepository.findById(id);
 	}
 

@@ -1,0 +1,47 @@
+package com.housseine.clothes.infra.bdd;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.housseine.clothes.domain.IClothesDomainRepository;
+import com.housseine.clothes.entity.Clothes;
+@Component
+public class ClothesRepository implements IClothesDomainRepository {
+
+	@Autowired
+	IClothesRepository iClothesRepository;
+	
+	@Override
+	public Clothes addclothes(Clothes clothes) {
+		return iClothesRepository.saveAndFlush(clothes);
+	}
+
+	@Override
+	public List<Clothes> getAllclothess() {
+		return iClothesRepository.findAll();
+	}
+
+	@Override
+	public void deleteclothes(Long clothesId) {
+		iClothesRepository.deleteById(clothesId);
+	}
+
+	@Override
+	public void updateclothes(Clothes clothes) {
+		iClothesRepository.saveAndFlush(clothes);
+	}
+
+	@Override
+	public Optional<Clothes> getclothesById(Long id) {
+		return iClothesRepository.findById(id);
+	}
+
+	@Override
+	public List<Clothes> getClothesByLabel(String term) {
+		return iClothesRepository.findByLabelContainingIgnoreCase(term);
+	}
+
+}

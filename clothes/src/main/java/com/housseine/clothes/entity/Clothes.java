@@ -17,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,7 @@ public class Clothes {
 	private String label;
 	private String description;
 	private Date date;
+	
 	@ManyToMany(cascade = { CascadeType.ALL },fetch = FetchType.LAZY)
 	@JoinTable(name = "CLOTHES_CATEGORIE", joinColumns = { @JoinColumn(name = "clothes_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "categorie_id") })

@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,7 @@ public class Categorie {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String label;
+	@JsonIgnore
 	@ManyToMany(mappedBy = "categories",fetch = FetchType.LAZY)
 	private Set<Clothes> clothes = new HashSet<>();
 

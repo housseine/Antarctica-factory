@@ -21,6 +21,7 @@ script:
  - docker tag antarctica-lab registry.heroku.com/$HEROKU_APP_NAME/web;
  - docker build -f clothes/Dockerfile -t niollo-clothes-api .
  - docker tag niollo-clothes-api registry.heroku.com/niollo-clothes-api/web;
+ #testing sonarcloud
  
 deploy:
  provider: script

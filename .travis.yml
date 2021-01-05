@@ -6,7 +6,7 @@ services:
 language: java
 dist: trusty
 jdk:
-  - oraclejdk8
+  - oraclejdk11
 sudo: required
 before_install:
  - chmod +x mvnw

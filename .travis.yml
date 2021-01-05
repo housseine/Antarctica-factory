@@ -34,3 +34,13 @@ deploy:
 notifications:
   email:
     - ht.housseine@gmail.com
+addons:
+  sonarcloud:
+    organization: "housseine-github"
+    token:
+      secure: "Wf377CWuexrR9tKCvNwHh4VZ2zkhc2VAPpabJJwCR15puQsV9+UsYDwVzT3yQ65OFXQRY2OkxycCrB/xXZy5etsOYvNzISVIkjJi0psy/BlcEe0NjDAug/dqB96WdjfbO1b1vUA877iTPKza3hEOTZSeZ6fa4Z0uwrVI2tGH4zEvvfEoCVFh6+xmW07kBuAj0fOFZVYMsc9Bc8XnGANrzdcZGpJLowYHWpMaqD3/iCCI/IScIlDIYSydagM12flfPS3pfc6VsvQyarF+FWkQ6xYdwy0sh6iDBnPIkgSHJ02B0u7slnUm59+X0yJNwKoOlPTbLYXwoyW1sUzy942mJAK5keOGz23T+IUNNnfHK2OLZVbVy7VvCP3EHj3pGZZj+7SlBmc1taq3P5NOrGy4vf2MBobKWKaZcosiK4JmPxefltsG9ppHIJ/mTLL/59SBvgU7maDylsY3S6BxTlY4/eh9FFGzkbJ32BMGO94jrtrCAmQbfJ2vhiPJUEuqbSlQyl5ash2sdGN7zZYnrFImpZgiM3xGK3sP/yybk+M3dLXT3A3nwssyN20+ThVMHzGC0lvJQgGTFItTOq2tQQxNRYuCRoCn0tXuN2wmgb/nD5Zt3rja7WkfRYnSvFRcDEn7iVlYWfEl8SzJM7I/SWlQhZXlDOZRM66maEUmB0rjAIM=" # encrypted value of your token
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  

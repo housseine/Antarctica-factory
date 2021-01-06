@@ -1,4 +1,4 @@
-package com.bnpparibas.dsira.creditconsonormesapi.exception;
+package com.housseine.clothes.exception;
 
 public class CustomException extends CustomAbstractException {
 

@@ -1,4 +1,4 @@
-package com.bnpparibas.dsira.creditconsonormesapi.exception;
+package com.housseine.clothes.exception;
 
 import java.util.ArrayList;
 import java.util.List;

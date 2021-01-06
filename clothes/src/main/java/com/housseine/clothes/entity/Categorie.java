@@ -40,5 +40,10 @@ public class Categorie {
 		this.label = label;
 		this.clothes = clothes;
 	}
+	
+	public Categorie(String label) {
+		super();
+		this.label = label;
+	}
 
 }

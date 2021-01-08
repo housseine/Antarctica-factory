@@ -13,5 +13,5 @@ public interface ICategorieDomainRepository {
 	void deleteCategorie(Long categorieId);
 	void updateCategorie(Categorie categorie);
 	Optional<Categorie> getCategorieById(Long id);
-	List<Categorie> getCategorieByLabel(String term);
+	List<Categorie> getCategorieByLabel(String termToSearch);
 }

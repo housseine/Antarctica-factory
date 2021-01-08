@@ -10,10 +10,6 @@ import org.springframework.stereotype.Component;
 import com.housseine.clothes.domain.ICategorieDomainRepository;
 import com.housseine.clothes.entity.Categorie;
 
-/**
- * @author housseine
- *
- */
 @Component
 public class CategorieRepository implements ICategorieDomainRepository {
 

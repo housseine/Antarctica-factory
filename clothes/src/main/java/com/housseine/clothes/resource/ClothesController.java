@@ -34,22 +34,22 @@ public class ClothesController {
 
 	@PostMapping()
 	public ResponseEntity<Clothes> addClothes(@RequestBody Clothes clothes) {
-		return new ResponseEntity<Clothes>(clothesService.addclothes(clothes), HttpStatus.OK);
+		return new ResponseEntity<Clothes>(clothesService.addClothes(clothes), HttpStatus.OK);
 	}
 
 	@PatchMapping()
 	public void updateclothes(@RequestBody Clothes clothes) {
-		clothesService.updateclothes(clothes);
+		clothesService.updateClothes(clothes);
 	}
 
 	@DeleteMapping("/{id}")
 	void deleteclothes(@PathVariable Long id) {
-		clothesService.deleteclothes(id);
+		clothesService.deleteClothes(id);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Clothes>> getClothesById(@PathVariable Long id) {
-		return new ResponseEntity<Optional<Clothes>>(clothesService.getclothesById(id), HttpStatus.OK);
+		return new ResponseEntity<Optional<Clothes>>(clothesService.getClothesById(id), HttpStatus.OK);
 	}
 
 	@GetMapping()

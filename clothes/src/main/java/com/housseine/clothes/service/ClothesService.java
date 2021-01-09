@@ -14,7 +14,7 @@ public class ClothesService implements IClothesService{
 	IClothesDomainRepository clothesRepository;
 
 	@Override
-	public Clothes addclothes(Clothes clothes) {
+	public Clothes addClothes(Clothes clothes) {
 		return clothesRepository.addClothes(clothes);
 	}
 
@@ -24,17 +24,17 @@ public class ClothesService implements IClothesService{
 	}
 
 	@Override
-	public void deleteclothes(Long clothesId) {
+	public void deleteClothes(Long clothesId) {
 		clothesRepository.deleteClothes(clothesId);		
 	}
 
 	@Override
-	public void updateclothes(Clothes clothes) {
+	public void updateClothes(Clothes clothes) {
 		clothesRepository.updateClothes(clothes);		
 	}
 
 	@Override
-	public Optional<Clothes> getclothesById(Long id) {
+	public Optional<Clothes> getClothesById(Long id) {
 		return clothesRepository.getClothesById(id);
 	}
 

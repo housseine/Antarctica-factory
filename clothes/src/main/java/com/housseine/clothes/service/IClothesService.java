@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.housseine.clothes.entity.Clothes;
-
 public interface IClothesService {
 	Clothes addclothes(Clothes clothes);
 	List<Clothes> getAllclothess();

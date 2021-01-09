@@ -1,4 +1,4 @@
-package com.housseine.clothes.infra.bdd;
+package com.housseine.clothes.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

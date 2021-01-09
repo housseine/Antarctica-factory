@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.housseine.clothes.entity.Categorie;
-
 public interface ICategorieService {
 
 	Categorie addCategorie(Categorie categorie);

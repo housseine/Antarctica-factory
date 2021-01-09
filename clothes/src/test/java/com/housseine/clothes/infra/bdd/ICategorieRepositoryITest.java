@@ -17,6 +17,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.housseine.clothes.config.TestConfig;
 import com.housseine.clothes.entity.Categorie;
 
 @ContextConfiguration(classes = TestConfig.class)

@@ -19,7 +19,7 @@ public class ClothesService implements IClothesService{
 	}
 
 	@Override
-	public List<Clothes> getAllclothess() {
+	public List<Clothes> getAllClothess() {
 		return clothesRepository.getAllClothess();
 	}
 

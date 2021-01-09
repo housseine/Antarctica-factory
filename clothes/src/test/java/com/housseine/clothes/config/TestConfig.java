@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ComponentScan(basePackages = "com.housseine.clothes.*")
 //@EnableJpaRepositories(basePackages = "com.housseine.clothes.infra.bdd")
-@PropertySource("application-dev.properties")
+@PropertySource("classpath:/application-dev.properties")
 //@EnableTransactionManagement	
 public class TestConfig {
 

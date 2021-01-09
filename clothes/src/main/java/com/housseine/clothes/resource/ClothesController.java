@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.housseine.clothes.entity.Clothes;
 import com.housseine.clothes.service.ClothesService;
+import com.housseine.clothes.service.IClothesService;
 
 
 
@@ -25,11 +26,11 @@ import com.housseine.clothes.service.ClothesService;
 @RequestMapping("/clothes")
 public class ClothesController {
 	@Autowired
-	ClothesService clothesService;
+	IClothesService clothesService;
 
 	@GetMapping("/getall")
 	public ResponseEntity<List<Clothes>> getAllClothes() {
-		return new ResponseEntity<List<Clothes>>(clothesService.getAllclothess(), HttpStatus.OK);
+		return new ResponseEntity<List<Clothes>>(clothesService.getAllClothess(), HttpStatus.OK);
 	}
 
 	@PostMapping()

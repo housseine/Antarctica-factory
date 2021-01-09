@@ -93,7 +93,7 @@ class IClothesServiceTest {
 		clothess.add(clothes);
 		when(clothesDomainRepository.getAllClothess()).thenReturn(clothess);
 		// when
-		List<Clothes> clothess2 = clothesService.getAllclothess();
+		List<Clothes> clothess2 = clothesService.getAllClothess();
 		// then
 		assertThat(clothess).isEqualTo(clothess2);
 		verify(clothesDomainRepository, times(1)).getAllClothess();

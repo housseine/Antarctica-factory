@@ -19,13 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.housseine.clothes.entity.Categorie;
 import com.housseine.clothes.service.CategorieService;
+import com.housseine.clothes.service.ICategorieService;
 
 
 @RestController()
 @RequestMapping("/categorie")
 public class CategorieController {
 	@Autowired
-	CategorieService categorieService;
+	ICategorieService categorieService;
 
 	@GetMapping("/getall")
 	public ResponseEntity<List<Categorie>> getAllCategorie() {

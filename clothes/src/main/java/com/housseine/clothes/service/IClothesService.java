@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.housseine.clothes.entity.Clothes;
 public interface IClothesService {
 	Clothes addClothes(Clothes clothes);
-	List<Clothes> getAllclothess();
+	List<Clothes> getAllClothess();
 	void deleteClothes(Long clothesId);
 	void updateClothes(Clothes clothes);
 	Optional<Clothes> getClothesById(Long id);

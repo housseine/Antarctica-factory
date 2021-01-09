@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -89,6 +90,31 @@ class ICategorieServiceTest {
 		// then
 		assertThat(categories).isEqualTo(categories2);
 		verify(categorieDomainRepository, times(1)).getAllCategories();
+	}
+
+	@Test
+	public void shouldCategorieById() {
+		// given
+		Optional<Categorie> optionalCategorieOptional = Optional.of(categorie);
+		when(categorieDomainRepository.getCategorieById(1L)).thenReturn(optionalCategorieOptional);
+		// when
+		Optional<Categorie> optionalCategorieOptional2 = categorieService.getCategorieById(1L);
+		// then
+		assertThat(optionalCategorieOptional.get()).isEqualToComparingFieldByField(optionalCategorieOptional2.get());
+		verify(categorieDomainRepository, times(1)).getCategorieById(1L);
+	}
+
+	@Test
+	public void shouldGetCategorieByTerm() {
+		// given
+		List<Categorie> categories = new ArrayList<Categorie>();
+		categories.add(new Categorie("Women"));
+		when(categorieDomainRepository.getCategorieByLabel("Women")).thenReturn(categories);
+		// when
+		List<Categorie> categories2 = categorieService.getCategorieByLabel("Women");
+		// then
+		assertThat(categories).isEqualTo(categories2);
+		verify(categorieDomainRepository, times(1)).getCategorieByLabel("Women");
 	}
 
 }

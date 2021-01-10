@@ -68,6 +68,9 @@
 				<version>0.8.5</version>
 				<configuration>
 					<exclude>META-INF/**</exclude>
+					<excludes>
+						<exclude>**/com/antarctica/**</exclude>
+					</excludes>
 				</configuration>
 				<executions>
 					<execution>

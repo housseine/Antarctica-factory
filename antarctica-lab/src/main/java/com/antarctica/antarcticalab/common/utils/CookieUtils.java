@@ -38,20 +38,7 @@ public class CookieUtils {
         cookie.setHttpOnly(true);
         cookie.setMaxAge(maxAge);
         response.addCookie(cookie);
-        //response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=None");
-//        ResponseCookie responseCookie = ResponseCookie.from(name, value)
-//        		.maxAge(maxAge)
-//                .domain("https://antarctica-lab.herokuapp.com")
-//                .domain("antarctica-lab-web.web.app")
-//                .httpOnly(true)
-//                .sameSite("None")
-//                .secure(true)
-//                .path("/")
-//                .build();
-        
-//        String url=responseCookie.toString();
-//		System.out.println("my url: "+url);
-//		response.addHeader(HttpHeaders.SET_COOKIE, url);
+
     }
 
     public static void deleteCookie(HttpServletRequest request, HttpServletResponse response, String name) {

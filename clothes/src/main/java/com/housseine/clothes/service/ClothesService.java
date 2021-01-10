@@ -29,8 +29,8 @@ public class ClothesService implements IClothesService{
 	}
 
 	@Override
-	public void updateClothes(Clothes clothes) {
-		clothesRepository.updateClothes(clothes);		
+	public Clothes updateClothes(Clothes clothes) {
+		return clothesRepository.updateClothes(clothes);		
 	}
 
 	@Override

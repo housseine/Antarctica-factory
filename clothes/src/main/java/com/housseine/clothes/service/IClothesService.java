@@ -8,7 +8,7 @@ public interface IClothesService {
 	Clothes addClothes(Clothes clothes);
 	List<Clothes> getAllClothess();
 	void deleteClothes(Long clothesId);
-	void updateClothes(Clothes clothes);
+	Clothes updateClothes(Clothes clothes);
 	Optional<Clothes> getClothesById(Long id);
 	List<Clothes> getClothesByLabel(String term);
 

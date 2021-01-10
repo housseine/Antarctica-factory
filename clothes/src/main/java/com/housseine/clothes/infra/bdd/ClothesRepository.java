@@ -30,8 +30,8 @@ public class ClothesRepository implements IClothesDomainRepository {
 	}
 
 	@Override
-	public void updateClothes(Clothes clothes) {
-		iClothesRepository.saveAndFlush(clothes);
+	public Clothes updateClothes(Clothes clothes) {
+		return iClothesRepository.saveAndFlush(clothes);
 	}
 
 	@Override

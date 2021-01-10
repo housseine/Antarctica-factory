@@ -17,10 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.housseine.clothes.entity.Clothes;
-import com.housseine.clothes.service.ClothesService;
 import com.housseine.clothes.service.IClothesService;
-
-
 
 @RestController()
 @RequestMapping("/clothes")
@@ -39,8 +36,8 @@ public class ClothesController {
 	}
 
 	@PatchMapping()
-	public void updateclothes(@RequestBody Clothes clothes) {
-		clothesService.updateClothes(clothes);
+	public ResponseEntity<Clothes> updateclothes(@RequestBody Clothes clothes) {
+		return new ResponseEntity<Clothes>(clothesService.updateClothes(clothes), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")

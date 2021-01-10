@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.housseine.clothes.entity.Categorie;
-import com.housseine.clothes.service.CategorieService;
 import com.housseine.clothes.service.ICategorieService;
 
 

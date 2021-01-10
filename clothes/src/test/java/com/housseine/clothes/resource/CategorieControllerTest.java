@@ -1,8 +1,6 @@
 package com.housseine.clothes.resource;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -77,8 +75,22 @@ class CategorieControllerTest {
 				.content(asJsonString(categorie))).andExpect(status().isOk()).andExpect(jsonPath("$.length()", is(2)))
 				.andExpect(jsonPath("$.label", is(categorie.getLabel())));
 	}
-	
-	//TODO ADD TESTS FOR getByCategorieById and ByLabel
+
+	@Test
+	public void shouldGetCategorieById() throws Exception {
+		when(service.getCategorieById(1L)).thenReturn(Optional.of(categorie));
+		mvc.perform(get("/categorie/{id}", "1").characterEncoding("UTF-8").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andExpect(jsonPath("$.length()", is(2)))
+				.andExpect(jsonPath("$.label", is(categorie.getLabel())));
+	}
+
+	@Test
+	public void shouldGetCategorieByLabel() throws Exception {
+		when(service.getCategorieByLabel("Kids")).thenReturn(Arrays.asList(categorie));
+		mvc.perform(get("/categorie?term=Kids").characterEncoding("UTF-8").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andExpect(jsonPath("$.length()", is(1)))
+				.andExpect(jsonPath("$[0].label", is(categorie.getLabel())));
+	}
 
 	public static String asJsonString(final Object obj) {
 		try {

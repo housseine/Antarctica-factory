@@ -6,6 +6,9 @@
 	<properties>
 		<jacoco.it.execution.data.file>${project.build.directory}/jacoco-it.exec</jacoco.it.execution.data.file>
 		<jacoco.ut.execution.data.file>${project.build.directory}/jacoco.exec</jacoco.ut.execution.data.file>
+		<sonar.exclusions>
+			**/com/antarctica/**
+		</sonar.exclusions>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

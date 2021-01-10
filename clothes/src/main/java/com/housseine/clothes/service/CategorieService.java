@@ -31,8 +31,8 @@ public class CategorieService implements ICategorieService {
 	}
 
 	@Override
-	public void updateCategorie(Categorie categorie) {
-		categorieRepository.updateCategorie(categorie);		
+	public Categorie updateCategorie(Categorie categorie) {
+		return categorieRepository.updateCategorie(categorie);		
 	}
 
 	@Override

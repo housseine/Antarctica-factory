@@ -10,7 +10,7 @@ public interface ICategorieService {
 	Categorie addCategorie(Categorie categorie);
 	List<Categorie> getAllcategories();
 	void deleteCategorie(Long categorieId);
-	void updateCategorie(Categorie categorie);
+	Categorie updateCategorie(Categorie categorie);
 	Optional<Categorie> getCategorieById(Long id);
 	List<Categorie> getCategorieByLabel(String term);
 }

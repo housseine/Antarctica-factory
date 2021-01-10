@@ -32,8 +32,8 @@ public class CategorieRepository implements ICategorieDomainRepository {
 	}
 
 	@Override
-	public void updateCategorie(Categorie categorie) {
-		iCategorieRepository.saveAndFlush(categorie);
+	public Categorie updateCategorie(Categorie categorie) {
+		return iCategorieRepository.saveAndFlush(categorie);
 	}
 
 	@Override

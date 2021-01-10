@@ -39,8 +39,8 @@ public class CategorieController {
 	}
 
 	@PatchMapping()
-	public void updatecategorie(@RequestBody Categorie categorie) {
-		categorieService.updateCategorie(categorie);
+	public ResponseEntity<Categorie> updatecategorie(@RequestBody Categorie categorie) {
+		return new ResponseEntity<Categorie>(categorieService.updateCategorie(categorie), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")

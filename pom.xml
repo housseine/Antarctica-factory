@@ -8,7 +8,7 @@
 		<jacoco.ut.execution.data.file>${project.build.directory}/jacoco.exec</jacoco.ut.execution.data.file>
 		<sonar.exclusions>
 			**/com/antarctica/**,
-			**/com/housseine/clothes/config/**
+			**/com/housseine/clothes/config/**,
 			**/com/housseine/clothes/exception/**
 		</sonar.exclusions>
 	</properties>

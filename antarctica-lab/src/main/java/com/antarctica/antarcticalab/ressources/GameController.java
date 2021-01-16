@@ -25,7 +25,7 @@ public class GameController {
 	@Autowired
 	GameService gameService;
 
-	@GetMapping("/getall")
+	@GetMapping("/all")
 	public ResponseEntity<List<Game>> getAllGames() {
 		return new ResponseEntity<List<Game>>(gameService.getAllGames(), HttpStatus.OK);
 	}

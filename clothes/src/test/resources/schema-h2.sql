@@ -3,7 +3,7 @@
 -- SQLINES DEMO *** admin.net/
 --
 -- SQLINES DEMO *** :3306
--- SQLINES DEMO *** en. 08 jan. 2021 à 10:10
+-- SQLINES DEMO *** en. 22 jan. 2021 à 22:29
 -- SQLINES DEMO *** r :  5.7.26
 -- SQLINES DEMO ***  7.2.18
 
@@ -29,15 +29,12 @@ SET @time_zone = '+00:00';
 --
 
 DROP TABLE IF EXISTS categorie_table;
+
 CREATE TABLE categorie_table (
-  categorie_id bigint NOT NULL,
-  label varchar(255) DEFAULT NULL,
+  categorie_id number(19) NOT NULL,
+  label varchar2(255) DEFAULT NULL,
   PRIMARY KEY (categorie_id)
 ) ;
-
---
--- SQLINES DEMO ***  données de la table `categorie_table`
---
 
 
 
@@ -48,29 +45,33 @@ CREATE TABLE categorie_table (
 --
 
 DROP TABLE IF EXISTS clothes_categorie;
+
 CREATE TABLE clothes_categorie (
-  clothes_id bigint NOT NULL,
-  categorie_id bigint NOT NULL,
+  clothes_id number(19) NOT NULL,
+  categorie_id number(19) NOT NULL,
   PRIMARY KEY (clothes_id,categorie_id)
 ) ;
 
 CREATE INDEX FKnyj4iip3te8b8dykg3j0rd3uh ON clothes_categorie (categorie_id);
 
--- SQLINES DEMO *** ---------------------------------------
+--
+-- SQLINES DEMO ***  données de la table `clothes_categorie`
+--
 
---
--- SQLINES DEMO *** able `clothes_table`
---
+
 
 DROP TABLE IF EXISTS clothes_table;
 CREATE TABLE clothes_table (
-  clothes_id bigint NOT NULL,
-  date datetime2(0) DEFAULT NULL,
-  description varchar(255) DEFAULT NULL,
-  label varchar(255) DEFAULT NULL,
+  clothes_id number(19) NOT NULL,
+  date timestamp(0) DEFAULT NULL,
+  description varchar2(255) DEFAULT NULL,
+  label varchar2(255) DEFAULT NULL,
   PRIMARY KEY (clothes_id)
 ) ;
 
+--
+-- SQLINES DEMO ***  données de la table `clothes_table`
+--
 -- SQLINES DEMO *** ---------------------------------------
 
 --
@@ -78,13 +79,11 @@ CREATE TABLE clothes_table (
 --
 
 DROP TABLE IF EXISTS hibernate_sequence;
+
 CREATE TABLE hibernate_sequence (
-  next_val bigint DEFAULT NULL
+  next_val number(19) DEFAULT NULL
 ) ;
 
---
--- SQLINES DEMO ***  données de la table `hibernate_sequence`
---
 
 COMMIT;
 

@@ -1,5 +1,7 @@
 package com.antarctica.antarcticalab.security;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -10,94 +12,107 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import com.antarctica.antarcticalab.entity.Role;
 import com.antarctica.antarcticalab.entity.User;
 
 public class UserPrincipal implements OAuth2User, UserDetails {
-    private Long id;
-    private String email;
-    private String password;
-    private Collection<? extends GrantedAuthority> authorities;
-    private Map<String, Object> attributes;
+	private Long id;
+	private String email;
+	private String password;
+	private Collection<? extends GrantedAuthority> authorities;
+	private Map<String, Object> attributes;
 
-    public UserPrincipal(Long id, String email, String password, Collection<? extends GrantedAuthority> authorities) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.authorities = authorities;
-    }
+	public UserPrincipal(Long id, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.authorities = authorities;
+	}
 
-    public static UserPrincipal create(User user) {
-        List<GrantedAuthority> authorities = Collections.
-                singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+	public static UserPrincipal create(User user) {
+		List<GrantedAuthority> authorities = new ArrayList<>();
+		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-        return new UserPrincipal(
-                user.getId(),
-                user.getEmail(),
-                user.getPassword(),
-                authorities
-        );
-    }
+		List<Role> userRoles = user.getRoles();
 
-    public static UserPrincipal create(User user, Map<String, Object> attributes) {
-        UserPrincipal userPrincipal = UserPrincipal.create(user);
-        userPrincipal.setAttributes(attributes);
-        return userPrincipal;
-    }
+		if (userRoles != null) {
+			if (userRoles.size() > 0) {
+				try {
+					authorities.clear();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				for (Role role : user.getRoles()) {
+					authorities.add(new SimpleGrantedAuthority(role.getAuthority()));
+				}
 
-    public Long getId() {
-        return id;
-    }
+			}
 
-    public String getEmail() {
-        return email;
-    }
+		}
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
+		return new UserPrincipal(user.getId(), user.getEmail(), user.getPassword(), authorities);
+	}
 
-    @Override
-    public String getUsername() {
-        return email;
-    }
+	public static UserPrincipal create(User user, Map<String, Object> attributes) {
+		UserPrincipal userPrincipal = UserPrincipal.create(user);
+		userPrincipal.setAttributes(attributes);
+		return userPrincipal;
+	}
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+	@Override
+	public String getPassword() {
+		return password;
+	}
 
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+	@Override
+	public String getUsername() {
+		return email;
+	}
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
 
-    @Override
-    public Map<String, Object> getAttributes() {
-        return attributes;
-    }
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
 
-    public void setAttributes(Map<String, Object> attributes) {
-        this.attributes = attributes;
-    }
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
 
-    @Override
-    public String getName() {
-        return String.valueOf(id);
-    }
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return authorities;
+	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		return attributes;
+	}
+
+	public void setAttributes(Map<String, Object> attributes) {
+		this.attributes = attributes;
+	}
+
+	@Override
+	public String getName() {
+		return String.valueOf(id);
+	}
 }

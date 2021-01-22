@@ -38,6 +38,7 @@ import com.antarctica.antarcticalab.dto.LoginRequest;
 import com.antarctica.antarcticalab.dto.PayloadResponseLogin;
 import com.antarctica.antarcticalab.dto.SignUpRequest;
 import com.antarctica.antarcticalab.dto.TokenPayLoad;
+import com.antarctica.antarcticalab.entity.Role;
 import com.antarctica.antarcticalab.entity.User;
 import com.antarctica.antarcticalab.exception.BadRequestException;
 import com.antarctica.antarcticalab.infra.bdd.UserRepository;
@@ -113,7 +114,7 @@ public class AuthController {
 		user.setEmail(signUpRequest.getEmail());
 		user.setPassword(signUpRequest.getPassword());
 		user.setProvider(AuthProvider.local);
-
+		user.setRoles(Arrays.asList(Role.ROLE_USER));
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 
 		User result = userRepository.save(user);

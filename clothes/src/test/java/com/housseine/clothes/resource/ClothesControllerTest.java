@@ -58,7 +58,7 @@ class ClothesControllerTest {
 
 		when(service.getAllClothess()).thenReturn(allClothess);
 
-		mvc.perform(get("/clothes/getall").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		mvc.perform(get("/clothes/all").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.length()", is(1))).andExpect(jsonPath("$[0].label", is(clothes.getLabel())));
 	}
 

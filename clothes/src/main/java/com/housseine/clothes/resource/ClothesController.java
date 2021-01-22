@@ -25,7 +25,7 @@ public class ClothesController {
 	@Autowired
 	IClothesService clothesService;
 
-	@GetMapping("/getall")
+	@GetMapping("/all")
 	public ResponseEntity<List<Clothes>> getAllClothes() {
 		return new ResponseEntity<List<Clothes>>(clothesService.getAllClothess(), HttpStatus.OK);
 	}

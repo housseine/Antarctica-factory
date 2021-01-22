@@ -40,11 +40,7 @@ class IClothesRepositoryITest {
 
 	@BeforeEach
 	public void before() {
-		categories = new HashSet<Categorie>();
-		categories.add(new Categorie("Men"));
-		categories.add(new Categorie("Wemone"));
-		categories.add(new Categorie("Kids"));
-		clothes = new Clothes("Niollo", "Great Clothes", new Date(), categories);
+		clothes = new Clothes("Niollo", "Great Clothes", new Date(), null);
 	}
 
 	@Test

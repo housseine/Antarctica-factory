@@ -38,7 +38,7 @@ public class Clothes {
 	private String description;
 	private Date date;
 	
-	@ManyToMany(cascade = { CascadeType.ALL },fetch = FetchType.LAZY)
+	@ManyToMany(cascade = { CascadeType.MERGE },fetch = FetchType.LAZY)
 	@JoinTable(name = "CLOTHES_CATEGORIE", joinColumns = { @JoinColumn(name = "clothes_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "categorie_id") })
 	Set<Categorie> categories = new HashSet<>();

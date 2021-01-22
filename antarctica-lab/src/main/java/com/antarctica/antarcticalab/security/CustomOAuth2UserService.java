@@ -1,6 +1,10 @@
 package com.antarctica.antarcticalab.security;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+
+import javax.annotation.security.RolesAllowed;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -12,6 +16,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import com.antarctica.antarcticalab.common.enumm.AuthProvider;
+import com.antarctica.antarcticalab.entity.Role;
 import com.antarctica.antarcticalab.entity.User;
 import com.antarctica.antarcticalab.exception.OAuth2AuthenticationProcessingException;
 import com.antarctica.antarcticalab.infra.bdd.UserRepository;
@@ -70,6 +75,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 		user.setName(oAuth2UserInfo.getName());
 		user.setEmail(oAuth2UserInfo.getEmail());
 		user.setImageUrl(oAuth2UserInfo.getImageUrl());
+		user.setRoles(Arrays.asList(Role.ROLE_USER));
 		return userRepository.save(user);
 	}
 

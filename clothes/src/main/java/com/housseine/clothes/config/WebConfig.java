@@ -23,13 +23,10 @@ public class WebConfig implements WebMvcConfigurer {
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
 				.allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
-				.allowedOrigins("http://localhost:8080")
-				.allowedOrigins("http://localhost:4200")
-				.allowedOrigins("https://antarctica-lab-web.web.app")
-				.allowedOrigins("https://antarctica-lab.herokuapp.com")
-				.allowedOrigins("https://antarctica-lab.herokuapp.com")
 				.allowedOrigins("*")
-				.allowedHeaders("*")
+				.allowedOrigins("http://localhost:8080/**")
+				//.allowedOrigins("http://localhost:8080/public/**")
+				//.allowedHeaders("*")
 				.allowCredentials(true)
 				.maxAge(MAX_AGE_SECS);
 	}

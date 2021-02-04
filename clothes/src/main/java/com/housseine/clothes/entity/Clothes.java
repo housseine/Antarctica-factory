@@ -42,6 +42,9 @@ public class Clothes {
 	@JoinTable(name = "CLOTHES_CATEGORIE", joinColumns = { @JoinColumn(name = "clothes_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "categorie_id") })
 	Set<Categorie> categories = new HashSet<>();
+	private String url;
+	private float size;
+	private String[] color;
 
 	public Clothes(String label, String description, Date date, Set<Categorie> categories) {
 		super();

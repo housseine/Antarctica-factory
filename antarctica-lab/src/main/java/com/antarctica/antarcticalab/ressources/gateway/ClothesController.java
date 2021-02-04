@@ -2,6 +2,7 @@ package com.antarctica.antarcticalab.ressources.gateway;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -37,6 +39,25 @@ public class ClothesController {
 
 		return body;
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Optional<Clothes>> getClothesById(@PathVariable Long id) throws Exception {
+		HttpHeaders headers = new HttpHeaders();
+		HttpEntity<Optional<Clothes>> entity = new HttpEntity<Optional<Clothes>>(headers);
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		ResponseEntity<Optional<Clothes>> body = null;
+		
+			try {
+				body = restTemplate
+						.exchange("http://localhost:8081/clothes/"+id, HttpMethod.GET, entity, new ParameterizedTypeReference<Optional<Clothes>>() {
+				        });
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		return body;
+	}
+
 
 	@GetMapping("/string")
 	public String gettest() {

@@ -23,44 +23,44 @@ import com.antarctica.antarcticalab.dto.Clothes;
 @RequestMapping("/public/clothes")
 public class ClothesController {
 
-	@Autowired
-	RestTemplate restTemplate;
+    @Autowired
+    RestTemplate restTemplate;
 
-	@GetMapping("/all")
-	// @PreAuthorize("hasRole('ROLE_USER')")
-	public ResponseEntity<List<Clothes>> getAllClothes() throws Exception {
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<List<Clothes>> entity = new HttpEntity<List<Clothes>>(headers);
-		ResponseEntity<List<Clothes>> body = null;
-			body = restTemplate
-					.exchange("http://localhost:8081/clothes/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<Clothes>>() {
-		            });
+    @GetMapping("/all")
+    // @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<List<Clothes>> getAllClothes() throws Exception {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity<List<Clothes>> entity = new HttpEntity<List<Clothes>>(headers);
+        ResponseEntity<List<Clothes>> body = null;
+        body = restTemplate
+                .exchange("http://localhost:8081/clothes/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<Clothes>>() {
+                });
 
-		return body;
-	}
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Optional<Clothes>> getClothesById(@PathVariable Long id) throws Exception {
-		HttpHeaders headers = new HttpHeaders();
-		HttpEntity<Optional<Clothes>> entity = new HttpEntity<Optional<Clothes>>(headers);
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		ResponseEntity<Optional<Clothes>> body = null;
-		
-			try {
-				body = restTemplate
-						.exchange("http://localhost:8081/clothes/"+id, HttpMethod.GET, entity, new ParameterizedTypeReference<Optional<Clothes>>() {
-				        });
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+        return body;
+    }
 
-		return body;
-	}
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Clothes>> getClothesById(@PathVariable Long id) throws Exception {
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<Optional<Clothes>> entity = new HttpEntity<Optional<Clothes>>(headers);
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        ResponseEntity<Optional<Clothes>> body = null;
+
+        try {
+            body = restTemplate
+                    .exchange("http://localhost:8081/clothes/" + id, HttpMethod.GET, entity, new ParameterizedTypeReference<Optional<Clothes>>() {
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return body;
+    }
 
 
-	@GetMapping("/string")
-	public String gettest() {
-		return "hello";
-	}
+    @GetMapping("/string")
+    public String gettest() {
+        return "hello";
+    }
 }

@@ -118,7 +118,7 @@
 		</plugins>
 	</build>
 	<modules>
-		<module>clothes</module>
+		<module>product</module>
 		<module>antarctica-lab</module>
 	</modules>
 </project>

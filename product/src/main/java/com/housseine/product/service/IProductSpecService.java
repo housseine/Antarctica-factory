@@ -19,4 +19,5 @@ public interface IProductSpecService {
 
 	List<ProductColorSize> getProductSpecByProductLabel(String term);
 
+    List<ProductColorSize> getProductSpecByProductId(Long id);
 }

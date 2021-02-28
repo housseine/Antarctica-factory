@@ -48,7 +48,7 @@ public class Product {
     private String gender;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("Product")
+    @JsonIgnoreProperties("product")
     private Set<ProductColorSize> productColorSizes = new HashSet<>();
 
     public Product(String label, String description, Date date, Set<Categorie> categories, String link, String majority,

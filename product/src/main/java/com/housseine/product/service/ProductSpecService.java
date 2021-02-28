@@ -48,4 +48,9 @@ public class ProductSpecService implements IProductSpecService {
 		return null;
 	}
 
+	@Override
+	public List<ProductColorSize> getProductSpecByProductId(Long id) {
+		return productSpecRepository.getProductSpecByProductId(id);
+	}
+
 }

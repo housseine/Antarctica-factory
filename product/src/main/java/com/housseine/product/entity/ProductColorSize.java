@@ -32,7 +32,7 @@ public class ProductColorSize {
 	@Id
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_id")
-	@JsonIgnoreProperties("ProductColorSize")
+	@JsonIgnoreProperties("productColorSizes")
 	private Product product;
 
 	@Id

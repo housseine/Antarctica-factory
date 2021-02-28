@@ -47,4 +47,9 @@ public class ProductSpecRepository implements IProductSpecDomainRepository{
 		return null;
 	}
 
+	@Override
+	public List<ProductColorSize> getProductSpecByProductId(Long id) {
+		return productSpecRepository.findByProductId(id);
+	}
+
 }

@@ -3,6 +3,7 @@ package com.housseine.product.resource;
 import java.util.List;
 import java.util.Optional;
 
+import com.housseine.product.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -21,46 +22,50 @@ import com.housseine.product.entity.ProductColorSize;
 import com.housseine.product.service.IProductSpecService;
 
 @RestController()
-@RequestMapping("/product/spec")
+@RequestMapping("/product-spec")
 public class ProductSpecController {
 
-	@Autowired
-	private IProductSpecService productSpecService;
+    @Autowired
+    private IProductSpecService productSpecService;
 
-	@GetMapping("/all")
-	public ResponseEntity<List<ProductColorSize>> getAllProductSpecs() {
-		return new ResponseEntity<List<ProductColorSize>>(productSpecService.getAllProductSpecs(), HttpStatus.OK);
-	}
+    @GetMapping("/all")
+    public ResponseEntity<List<ProductColorSize>> getAllProductSpecs() {
+        return new ResponseEntity<List<ProductColorSize>>(productSpecService.getAllProductSpecs(), HttpStatus.OK);
+    }
 
-	@PostMapping()
-	public ResponseEntity<ProductColorSize> addProductSpec(@RequestBody ProductColorSize productLine) {
-		
-		try {
-			return new ResponseEntity<ProductColorSize>(productSpecService.addProductSpec(productLine), HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    @PostMapping()
+    public ResponseEntity<ProductColorSize> addProductSpec(@RequestBody ProductColorSize productLine) {
 
-	@PatchMapping()
-	public ResponseEntity<ProductColorSize> updateProductSpec(@RequestBody ProductColorSize productLine) {
-		return new ResponseEntity<ProductColorSize>(productSpecService.updateProductSpec(productLine), HttpStatus.OK);
-	}
-	
-	@DeleteMapping()
-	void deleteproduct(@RequestBody ProductColorSize productLine) {
-		productSpecService.deleteProductSpec(productLine);
-	}
+        try {
+            return new ResponseEntity<ProductColorSize>(productSpecService.addProductSpec(productLine), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Optional<ProductColorSize>> getProductSpecById(@PathVariable Long id) {
-		return new ResponseEntity<Optional<ProductColorSize>>(productSpecService.getProductSpecById(id), HttpStatus.OK);
-	}
+    @PatchMapping()
+    public ResponseEntity<ProductColorSize> updateProductSpec(@RequestBody ProductColorSize productLine) {
+        return new ResponseEntity<ProductColorSize>(productSpecService.updateProductSpec(productLine), HttpStatus.OK);
+    }
 
-	@GetMapping()
-	public ResponseEntity<List<ProductColorSize>> getProductSpecByName(@RequestParam("term") String term) {
-		return new ResponseEntity<List<ProductColorSize>>(productSpecService.getProductSpecByProductLabel(term), HttpStatus.OK);
-	}
+    @DeleteMapping()
+    void deleteproduct(@RequestBody ProductColorSize productLine) {
+        productSpecService.deleteProductSpec(productLine);
+    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<ProductColorSize>> getProductSpecById(@PathVariable Long id) {
+        return new ResponseEntity<Optional<ProductColorSize>>(productSpecService.getProductSpecById(id), HttpStatus.OK);
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<ProductColorSize>> getProductSpecByName(@RequestParam("term") String term) {
+        return new ResponseEntity<List<ProductColorSize>>(productSpecService.getProductSpecByProductLabel(term), HttpStatus.OK);
+    }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<List<ProductColorSize>> getProductSpecByProductId(@PathVariable Long id) {
+		return  new ResponseEntity<List<ProductColorSize>>(productSpecService.getProductSpecByProductId(id),HttpStatus.OK);
+    }
 }

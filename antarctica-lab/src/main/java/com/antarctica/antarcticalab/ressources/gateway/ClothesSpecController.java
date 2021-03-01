@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import com.antarctica.antarcticalab.dto.ProductColorSize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -50,6 +51,24 @@ public class ClothesSpecController {
         try {
             body = restTemplate
                     .exchange("http://localhost:8081/clothes/" + id, HttpMethod.GET, entity, new ParameterizedTypeReference<Optional<Clothes>>() {
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return body;
+    }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<List<ProductColorSize>>getProductSpecByProductId(@PathVariable Long id){
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<List<ProductColorSize>> entity = new HttpEntity<List<ProductColorSize>>(headers);
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        ResponseEntity<List<ProductColorSize>> body = null;
+
+        try {
+            body = restTemplate
+                    .exchange("http://localhost:8081/product-spec/product/" + id, HttpMethod.GET, entity, new ParameterizedTypeReference<List<ProductColorSize>>() {
                     });
         } catch (Exception e) {
             e.printStackTrace();
